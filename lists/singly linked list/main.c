@@ -250,6 +250,23 @@ void print_list(singly_linked_list* list, int mode)
 	printf("\n\n\n");
 }
 
+void reverse(singly_linked_list* list)
+{
+	node* temp = list->root;
+	node* prev = NULL;
+	node* next = NULL;
+	while(temp != NULL)
+	{
+		next = temp->next;
+		temp->next = prev;
+		prev = temp;
+		temp = next;
+	}
+	temp = list->tail;
+	list->tail = list->root;
+	list->root = temp;
+}
+
 int main()
 {
 	printf("Data structure name: Singly Linked List\nPick your option from below.\n");
@@ -269,6 +286,7 @@ int main()
 		printf("10. Dequeue a node.\n");
 		printf("11. Delete a node at a particular position.\n");
 		printf("12. Delete a node with some particular data.\n");
+		printf("13. Reverse the list.\n");
 		printf("Enter any other number to exit.\n");
 		printf("==# : ");
 		scanf("%d", &inp1);
@@ -323,6 +341,9 @@ int main()
 			printf("Enter the data: ");
 			scanf("%d", &data);
 			delete_node_data(list, data);
+			break;
+		case 13:
+			reverse(list);
 			break;
 		default:
 			inp1 = 0;
