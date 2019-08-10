@@ -36,10 +36,14 @@ stack* create_stack()
 	stk->top = NULL;
 	stk->size = 0;
 	stk->limit = 100;
+	return stk;
 }
 
 void stack_insert(stack* stk, int n)
 {
+	stack* st;
+	st = create_stack();
+	*stk = *st;
 	int inp;
     printf("Enter the elements:-\n");
     stk->root = stk->top = create_node();
